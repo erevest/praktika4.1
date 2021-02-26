@@ -16,7 +16,18 @@ namespace praktika4._1
     {
       InitializeComponent();
     }
-
+  
+    static int Factorial(int x)
+    {
+      if (x == 0)
+      {
+        return 1;
+      }
+      else
+      {
+        return x * Factorial(x - 1);
+      }
+    }
     private void button1_Click(object sender, EventArgs e)
     {
       Double n = Convert.ToDouble(textBox1.Text);
@@ -25,14 +36,16 @@ namespace praktika4._1
       int m = 0;
       if (radioButton2.Checked) m = 1;
       double s = 0, p = 1, ch;
-      double i = 1;
+      int i = 1;
+
+
       switch (m)
       {
         case 0:
-          ch = 1 / i;
+          ch = 1.0 / (2 * i + Factorial(i));
           while (ch >= eps)
           {
-            ch = 1 / i;
+            ch = 1.0 / (2 * i + Factorial(i));
             s += ch;
             i++;
           }
@@ -42,7 +55,7 @@ namespace praktika4._1
         case 1:
           for (i = 1; i <= n; i++)
           {
-            ch = i;
+            ch = 1 / ((2 * n) + Factorial(i));
             p *= ch;
           }
           textBox2.Text += "При m = " + textBox1.Text + Environment.NewLine;
